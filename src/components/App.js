@@ -1,7 +1,7 @@
-import React,{StrictMode, useEffect} from 'react'
+import React,{StrictMode, useEffect,useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {Route,Switch,Link} from 'react-router-dom'
-import {login} from '../actiongenerators/logActions'
+import {login,startadduser} from '../actiongenerators/logActions'
 import PrivateRoute from './PrivateRoute'
 import Login  from './Login'
 import User from './User'
@@ -11,52 +11,53 @@ import Register from './Register'
 
 
 const App =(props)=>{
-    const user = useSelector(state => state.log)
+    const [users,setUsers]= useState([])
+    const [user,setUser] = useState(false)
+    // const user = useSelector(state => state.log)
     const dispatch =useDispatch()
 
-    console.log(user)
-    const getData=()=>{
-      fetch('data.json'
-      ,{
-        headers : { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-         }
-      }
-      )
-        .then(function(response){
-          return response.json();
-        })
-        .then(function(myJson) {
-          console.log(myJson);
-        });
-    }
-    useEffect(()=>{
-      getData()
-    },[])
-
-    // fetch("../data.json")
-    //     .then(function(resp){
-    //       console.log('resp', JSON.stringify(resp) )
-    //       return resp.json()
-    //     })
-    //     .then(function(data){
-    //       console.log(data)
-    //     })
-
-    useEffect(()=>{
-      if(localStorage.getItem('login')){
-        dispatch(login())
-      }
-    },[dispatch])
     
+    
+
+    useEffect(()=>{
+      if(localStorage.getItem('user')){
+        // dispatch(login())
+        const val=localStorage.getItem('user', JSON.stringify('id'))
+        fetch('data.json'
+        ,{
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        }
+        )
+          .then(function(response){
+            return response.json();
+          })
+          .then(function(myJson) {
+            setUsers(myJson)
+          });
+          // console.log(val,"val")
+          // console.log(users,"users")
+          if(val && users){
+            dispatch(startadduser(val,users))
+          }
+          
+        setUser(true)
+      }
+    
+    
+    },[users],[user])
+
+    
+  
 
     
     return (<div>
       {
-          user === true ? (<div><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
-            localStorage.removeItem('login')
-            dispatch(login())
+          user  ? (<div><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
+            localStorage.removeItem('user') 
+            window.location.reload()
        }}>logout</Link></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
       }
         <Switch>

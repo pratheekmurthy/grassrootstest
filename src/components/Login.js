@@ -1,19 +1,33 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {BrowserRouter} from 'react-router-dom'
-import {login} from '../actiongenerators/logActions'
+import {login,startadduser} from '../actiongenerators/logActions'
 import {Button,Grid,TextField,Paper} from '@material-ui/core'
 
 
 const Login =(props)=>{
-    console.log("hey")
-    const accounts =useSelector(state => state.accounts)
+   const [accounts,setAccounts] = useState([])
+    
    
     const dispatch = useDispatch()
+    useEffect(()=>{
 
-    console.log("hey 1")
-
-    
+        fetch('data.json'
+        ,{
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        }
+        )
+          .then(function(response){
+            return response.json();
+          })
+          .then(function(myJson) {
+            setAccounts(myJson)
+          });
+    },[])
+        
 
 
     //initialising state variable for input fields
@@ -25,17 +39,15 @@ const Login =(props)=>{
     
    
     const checkUser =(data)=>{
-        console.log("accounts", accounts)
+        
         const result = accounts.filter((ele)=>{
-            console.log(ele ,"element")
             return  ele.email === data.email
         })
 
         if(result[0]?.password === data.password){
-            console.log("i am here")
-            dispatch(login())
-            localStorage.setItem('login',data.email)
-            props.history.push('/')
+            localStorage.setItem('user',result[0].id)
+            dispatch(startadduser(result[0]))
+            // props.history.push('/')
         }
         
 
@@ -56,6 +68,7 @@ const Login =(props)=>{
 
 
    const  handleSubmit=(e)=>{
+    
     e.preventDefault()
     runValidations()
     if(Object.keys(errors).length === 0) {
@@ -64,6 +77,7 @@ const Login =(props)=>{
             email : email,
         password : password
         }
+        
         checkUser(formData)
         
     }else {

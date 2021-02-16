@@ -15,13 +15,14 @@ export const logReducer=(state=initialState,action)=>{
 }
 
 
-const accountsInitialState = Data
+const accountsInitialState = {}
 
 
 export const accountsReducer=(state = accountsInitialState,action)=>{
     switch(action.type){
         case 'ADD_USER':{
-            return [...state,action.payload]
+            // console.log(action.payload,"red")
+            return [action.payload]
         }
         default : {
             return state

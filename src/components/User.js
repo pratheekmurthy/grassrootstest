@@ -2,23 +2,24 @@ import React,{useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 
 const User =(props)=>{
-    const accounts =useSelector(state => state.accounts)
-    const dispatch = useDispatch()
-
-    console.log(accounts.length)
-
-    const email = localStorage.getItem('login')
+    const user = useSelector(state => state.accounts)
     
-    if(email){
-        const result = accounts.filter((user)=>{
-            console.log(user,'each')
-            return user.email === email
-        })
-        
-    }
+   
+    console.log(user)
+    
 
     return (<div>
         <h2>Admin page</h2>
+        {
+            user.length > 0 ? (<div>
+                <h4>user:id - {user[0][0].id}</h4>
+                <h4>user Email - {user[0][0].email}</h4>
+                <h4>user Password - {user[0][0].password}</h4>
+            </div>):(<div>
+                <h3>Login to acess this data</h3>
+            </div>)
+        }
+        
     </div>)
 }
 
