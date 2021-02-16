@@ -1,5 +1,3 @@
-import Data from '../data.json'
-
 const initialState = false
 
 export const logReducer=(state=initialState,action)=>{

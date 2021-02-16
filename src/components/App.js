@@ -7,13 +7,14 @@ import Login  from './Login'
 import User from './User'
 import Home from './Home'
 import Register from './Register'
+import {Paper} from '@material-ui/core'
 
 
 
 const App =(props)=>{
     const [users,setUsers]= useState([])
     const [user,setUser] = useState(false)
-    // const user = useSelector(state => state.log)
+    // const login = useSelector(state => state.log)
     const dispatch =useDispatch()
 
     
@@ -21,7 +22,6 @@ const App =(props)=>{
 
     useEffect(()=>{
       if(localStorage.getItem('user')){
-        // dispatch(login())
         const val=localStorage.getItem('user', JSON.stringify('id'))
         fetch('data.json'
         ,{
@@ -54,12 +54,14 @@ const App =(props)=>{
 
     
     return (<div>
+      <Paper elevation={2}>
       {
           user  ? (<div><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
             localStorage.removeItem('user') 
             window.location.reload()
        }}>logout</Link></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
       }
+      </Paper>
         <Switch>
             <Route path='/' component={Home}exact= {true} />
             <Route path='/login' component={Login} exact={true}/>

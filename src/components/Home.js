@@ -7,7 +7,7 @@ const Home =(props)=>{
     // console.log(users)
 
     return (<div>
-        <h1>Home Page</h1>
+        <h3 style={{textAlign :'center'}}>Home Page</h3>
         
     </div>)
 }

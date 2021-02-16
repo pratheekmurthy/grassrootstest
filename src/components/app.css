@@ -7,3 +7,18 @@
     margin-bottom: auto;
     padding: 2px;
   }
+
+  .accountBox {
+    width: 28rem;
+    position: absolute;
+    left: 40%;
+    top: 20%;
+    text-align: center;
+    margin-bottom: auto;
+    padding: 2px;
+  }
+  .navbarpaper {
+    height: 5rem;
+    text-align: end;
+    
+  }

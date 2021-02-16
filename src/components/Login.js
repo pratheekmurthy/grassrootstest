@@ -11,7 +11,6 @@ const Login =(props)=>{
    
     const dispatch = useDispatch()
     useEffect(()=>{
-
         fetch('data.json'
         ,{
           headers : { 
@@ -26,7 +25,7 @@ const Login =(props)=>{
           .then(function(myJson) {
             setAccounts(myJson)
           });
-    },[])
+    },[dispatch])
         
 
 
@@ -47,7 +46,8 @@ const Login =(props)=>{
         if(result[0]?.password === data.password){
             localStorage.setItem('user',result[0].id)
             dispatch(startadduser(result[0]))
-            // props.history.push('/')
+            props.history.push('/')
+            window.location.reload()
         }
         
 
