@@ -53,13 +53,14 @@ const App =(props)=>{
   
 
     
-    return (<div>
-      <Paper elevation={2}>
+    return (<div className="container">
+      <div>
+      <Paper elevation={2} variant="outlined" square>
       {
-          user  ? (<div><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
+          user  ? (<div><nav><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
             localStorage.removeItem('user') 
             window.location.reload()
-       }}>logout</Link></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
+       }}>logout</Link></nav></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
       }
       </Paper>
         <Switch>
@@ -69,6 +70,7 @@ const App =(props)=>{
             <PrivateRoute path="/user"  component={User} exact={true}/>
             
         </Switch>
+    </div>
     </div>)
 }
 

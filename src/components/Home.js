@@ -8,6 +8,7 @@ const Home =(props)=>{
 
     return (<div>
         <h3 style={{textAlign :'center'}}>Home Page</h3>
+        <marquee behavior="alternate"style={{heigth : '60px'}}>Sample work</marquee>
         
     </div>)
 }

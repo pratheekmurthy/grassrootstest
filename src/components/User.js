@@ -7,7 +7,7 @@ const User =(props)=>{
 
     
     return (<div className="accountBox">
-        <h2>Admin page</h2>
+        <marquee direction="right" style={{heigth : '60px'}}><h3>Admin Details</h3></marquee>
         {
             user.length === 1 ? (<div class="card">
                 <h6>user-id :{user[0][0].id}</h6>
