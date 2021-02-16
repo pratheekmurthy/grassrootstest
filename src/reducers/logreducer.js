@@ -1,3 +1,5 @@
+import Data from '../data.json'
+
 const initialState = false
 
 export const logReducer=(state=initialState,action)=>{
@@ -12,7 +14,7 @@ export const logReducer=(state=initialState,action)=>{
 
 }
 
-const accountsInitialState =[]
+const accountsInitialState =Data
 
 export const accountsReducer=(state = accountsInitialState,action)=>{
     switch(action.type){

@@ -9,7 +9,7 @@ const Login =(props)=>{
     const accounts =useSelector(state => state.accounts)
     const dispatch = useDispatch()
 
-    console.log(accounts)
+    
 
 
     //initialising state variable for input fields
@@ -22,9 +22,11 @@ const Login =(props)=>{
     const checkUser =(data)=>{
         
         const result = accounts.filter((ele)=>{
-            return  ele.email == data.email
+            
+            return  ele.email && ele.password === data.email && data.password
         })
         if(result[0]?.password === data.password){
+            console.log("i am here")
             dispatch(login())
             localStorage.setItem('login',data.email)
             props.history.push('/')
