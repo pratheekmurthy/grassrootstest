@@ -8,6 +8,7 @@ import configureStore from './store/configureStore'
 import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App'
 
+
 const store = configureStore()
 
 
@@ -15,7 +16,6 @@ const store = configureStore()
 if(true){
    localStorage.getItem('login')
    store.dispatch(login())
-
 }
 
 

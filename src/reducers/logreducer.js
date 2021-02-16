@@ -14,7 +14,9 @@ export const logReducer=(state=initialState,action)=>{
 
 }
 
-const accountsInitialState =Data
+
+const accountsInitialState = Data
+
 
 export const accountsReducer=(state = accountsInitialState,action)=>{
     switch(action.type){
@@ -22,7 +24,7 @@ export const accountsReducer=(state = accountsInitialState,action)=>{
             return [...state,action.payload]
         }
         default : {
-            return [state]
+            return state
         }
     }
 }

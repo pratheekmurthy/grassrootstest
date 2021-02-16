@@ -2,12 +2,15 @@ import React,{useState} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {startadduser} from '../actiongenerators/logActions'
 import {Button,Grid,TextField,Paper} from '@material-ui/core'
+import Data from '../data.json'
 
 const Register =(props)=>{
     const accounts =useSelector(state => state.accounts)
     console.log(accounts)
 
     const dispatch = useDispatch()
+
+    
 
     //initialising state variable for input fields
     const [email,setEmail]= useState("")
@@ -47,6 +50,8 @@ const Register =(props)=>{
         password : password
         }
         dispatch(startadduser(formData,handleRedirect))
+        Data.push(formData)
+        console.log(Data)
         
     }else {
         console.log('form errors', errors)

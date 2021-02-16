@@ -6,8 +6,12 @@ import {Button,Grid,TextField,Paper} from '@material-ui/core'
 
 
 const Login =(props)=>{
+    console.log("hey")
     const accounts =useSelector(state => state.accounts)
+   
     const dispatch = useDispatch()
+
+    console.log("hey 1")
 
     
 
@@ -18,13 +22,15 @@ const Login =(props)=>{
     const [formErrors, setFormErrors] = useState({})
     const errors = {}
 
+    
    
     const checkUser =(data)=>{
-        
+        console.log("accounts", accounts)
         const result = accounts.filter((ele)=>{
-            
-            return  ele.email && ele.password === data.email && data.password
+            console.log(ele ,"element")
+            return  ele.email === data.email
         })
+
         if(result[0]?.password === data.password){
             console.log("i am here")
             dispatch(login())
