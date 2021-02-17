@@ -27,7 +27,10 @@ export const startadduser = (id) => {
             const result = myJson.filter((user)=>{
                 return user.id === id
             })
-            dispatch(addUser(result[0]))
+            if(result.length >0){
+                dispatch(addUser(result[0]))
+            }
+            
 
             
           });
