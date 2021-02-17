@@ -21,7 +21,7 @@ const App = (props) => {
       isLogin ? (<div>
         <Header />
         {history.push("/")}
-      </div>) : (<div>{history.push("/login")}</div>)
+      </div>) : (<div>{history.push('/login')}</div>)
     }
     
 
