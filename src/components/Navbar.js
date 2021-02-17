@@ -29,13 +29,14 @@ const Navbar =(props)=>{
                 dispatch(login())
            }}>logout</Link></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
         }
-         <Switch>
+
+        <Switch>
             <Route path='/' component={Home}exact= {true} />
             <Route path='/login' component={Login} exact={true}/>
             <Route path='/register'  component={Register} exact={true}/>
-            <PrivateRoute path="/user"  component={User} exact={true}/>
-            
+            <PrivateRoute path="/user"  component={User} exact={true}/>    
         </Switch>
+         
     </div>)
 
 }

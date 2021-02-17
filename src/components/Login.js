@@ -63,7 +63,7 @@ const Login =(props)=>{
             localStorage.setItem('token',result[0].id)
            dispatch(startadduser(result[0])) 
            dispatch(login())
-            props.history.push('/')  
+            
         }
         }
 

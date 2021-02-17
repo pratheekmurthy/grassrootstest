@@ -22,3 +22,9 @@
     text-align: end;
     
   }
+
+  .homeprofileCard{
+    width : 10rem;
+    height: 20rem;
+    justify-content: center;
+  }
