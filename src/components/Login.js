@@ -1,15 +1,15 @@
-import React,{useState,useEffect} from 'react'
-import {useSelector,useDispatch} from 'react-redux'
-import {BrowserRouter} from 'react-router-dom'
-import {login,startadduser} from '../actiongenerators/logActions'
+import React,{useEffect,useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 import {Button,Grid,TextField,Paper} from '@material-ui/core'
-
+import {login,startadduser} from '../actiongenerators/logActions'
 
 const Login =(props)=>{
-   const [accounts,setAccounts] = useState([])
-    
-   
+    const [accounts,setAccounts] = useState([])
+    const isLogin = useSelector(state => state.log)
     const dispatch = useDispatch()
+
+    console.log(isLogin)
+    
     useEffect(()=>{
         fetch('data.json'
         ,{
@@ -25,7 +25,11 @@ const Login =(props)=>{
           .then(function(myJson) {
             setAccounts(myJson)
           });
-    },[dispatch])
+    },[]) 
+
+    // dispatch
+
+    
         
 
 
@@ -38,20 +42,24 @@ const Login =(props)=>{
     
    
     const checkUser =(data)=>{
-        
-        const result = accounts.filter((ele)=>{
-            return  ele.email === data.email
+        const result = accounts.filter((user)=>{
+            return user.email === data.email
         })
 
         if(result[0]?.password === data.password){
-            localStorage.setItem('user',result[0].id)
-            dispatch(startadduser(result[0]))
+            localStorage.setItem('token',result[0].id)
+            console.log("i am inside user")
+           dispatch(startadduser(result[0])) 
+           dispatch(login())
             props.history.push('/')
-            window.location.reload()
+            
         }
         
+       
+
 
     }
+
     //Validation function for input fields
     const runValidations =()=>{
         if(email.trim().length === 0){

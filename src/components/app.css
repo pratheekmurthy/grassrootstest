@@ -18,7 +18,7 @@
     padding: 2px;
   }
   .navbarpaper {
-    display : flex;
-    flex-direction: column;
+    height: 5rem;
+    text-align: end;
     
   }

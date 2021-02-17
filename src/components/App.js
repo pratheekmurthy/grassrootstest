@@ -1,77 +1,10 @@
-import React,{StrictMode, useEffect,useState} from 'react'
-import {useSelector,useDispatch} from 'react-redux'
-import {Route,Switch,Link} from 'react-router-dom'
-import {login,startadduser} from '../actiongenerators/logActions'
-import PrivateRoute from './PrivateRoute'
-import Login  from './Login'
-import User from './User'
-import Home from './Home'
-import Register from './Register'
-import {Paper} from '@material-ui/core'
-
-
+import React from 'react'
+import Navbar from './Navbar'
 
 const App =(props)=>{
-    const [users,setUsers]= useState([])
-    const [user,setUser] = useState(false)
-    // const login = useSelector(state => state.log)
-    const dispatch =useDispatch()
-
-    
-    
-
-    useEffect(()=>{
-      if(localStorage.getItem('user')){
-        const val=localStorage.getItem('user', JSON.stringify('id'))
-        fetch('data.json'
-        ,{
-          headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           }
-        }
-        )
-          .then(function(response){
-            return response.json();
-          })
-          .then(function(myJson) {
-            setUsers(myJson)
-          });
-          // console.log(val,"val")
-          // console.log(users,"users")
-          if(val && users){
-            dispatch(startadduser(val,users))
-          }
-          
-        setUser(true)
-      }
-    
-    
-    },[users],[user])
-
-    
-  
-
-    
-    return (<div className="container">
-      <div>
-      <Paper elevation={2} variant="outlined" square>
-      {
-          user  ? (<div><nav><Link to="/">Home</Link>|<Link to='/user'>Account</Link>|<Link to="/" onClick={()=>{
-            localStorage.removeItem('user') 
-            window.location.reload()
-       }}>logout</Link></nav></div>):(<div><Link to="/">Home</Link> | <Link to="/login">Login</Link>| <Link to="/register">Register</Link></div>)
-      }
-      </Paper>
-        <Switch>
-            <Route path='/' component={Home}exact= {true} />
-            <Route path='/login' component={Login} exact={true}/>
-            <Route path='/register'  component={Register} exact={true}/>
-            <PrivateRoute path="/user"  component={User} exact={true}/>
-            
-        </Switch>
-    </div>
-    </div>)
+  return (<div>
+    <Navbar/>
+  </div>)
 }
 
 export default App

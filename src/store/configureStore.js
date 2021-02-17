@@ -1,6 +1,5 @@
 import {combineReducers,createStore,applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
-
 import {logReducer,accountsReducer} from '../reducers/logreducer'
 
 
