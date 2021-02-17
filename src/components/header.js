@@ -15,6 +15,9 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {useDispatch} from 'react-redux'
+import {login} from '../actiongenerators/logActions'
+import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -81,8 +84,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar(props) {
-    const {handleRedirect,handlelogout} = props
-  const classes = useStyles();
+    const {handleRedirect} = props
+    let history = useHistory();
+    const dispatch = useDispatch()
+  
+    const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -90,9 +96,15 @@ export default function PrimarySearchAppBar(props) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
-    handleRedirect()
+    history.push('/user')
   };
 
+  const handlelogout=(e)=>{
+    localStorage.removeItem('token')
+    dispatch(login())
+
+  }
+  
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };

@@ -9,17 +9,12 @@ import Header from './header'
 const Home =(props)=>{
     const dispatch = useDispatch()
 
-    const handleRedirect =()=>{
-        props.history.push('/user')
-        window.location.reload()
-    }
+   
     
-    const handlelogout =(e)=>{
-        localStorage.removeItem('token')
-        window.location.reload()
-    }
+    
+    
     return (<div>
-      <Header handleRedirect={handleRedirect} handlelogout={handlelogout}/>
+      
        
     </div>)
 }

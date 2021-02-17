@@ -1,5 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
+import {login} from '../actiongenerators/logActions'
+import Header from './header'
 
 const User =(props)=>{
     const [account,setaccount] = useState({})
@@ -8,7 +10,8 @@ const User =(props)=>{
 
     
     
-    return (<div className="accountBox">
+    return (<div>
+        <div className="accountBox">
         <h2>Admin page</h2>
         {
             user.id ? (<div class="card">
@@ -20,6 +23,7 @@ const User =(props)=>{
             </div>)
         }
         
+    </div>
     </div>)
 }
 
