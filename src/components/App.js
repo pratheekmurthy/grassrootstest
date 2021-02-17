@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { Link, Switch, Route,Redirect } from 'react-router-dom'
+import { Link, Switch, Route,Redirect,useHistory } from 'react-router-dom'
 import Navbar from './NavBar'
 import Login from './Login'
 import Home from './Home'
@@ -13,13 +13,17 @@ import {login ,startadduser } from '../actiongenerators/logActions'
 const App = (props) => {
   const isLogin = useSelector(state => state.log)
 
+  let history =useHistory();
+
 
   return (<div >
     {
       isLogin ? (<div>
         <Header />
-      </div>) : (<div><Login/></div>)
+        {history.push("/")}
+      </div>) : (<div>{history.push("/login")}</div>)
     }
+    
 
     <Switch>
       <Route path='/' component={Home} exact={true} />

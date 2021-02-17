@@ -15,12 +15,15 @@ import Grid from '@material-ui/core/Grid';
 // import {LockOutlinedIcon} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import {useHistory} from 'react-router-dom'
 
 
 const Login =(props)=>{
     const [accounts,setAccounts] = useState([])
     const isLogin = useSelector(state => state.log)
     const dispatch = useDispatch()
+
+    let history = useHistory()
 
     
     useEffect(()=>{
@@ -40,8 +43,10 @@ const Login =(props)=>{
           });
     },[]) 
 
+    // dispatch
 
     
+        
 
 
     //initialising state variable for input fields
