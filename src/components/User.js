@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {login} from '../actiongenerators/logActions'
 import Header from './sidebar1'
+import {Paper} from '@material-ui/core'
 
 const User =(props)=>{
     const [account,setaccount] = useState({})
@@ -10,9 +11,10 @@ const User =(props)=>{
 
    
     
+    
     return (<div>
-        <Header />
-        <div className="accountBox">
+        <Header/>
+       <Paper elevation={3} className="paper">
         <h2>Admin page</h2>
         {
             user.id ? (<div class="card">
@@ -25,9 +27,9 @@ const User =(props)=>{
                 }
             </div>)
         }
-        
+       </Paper> 
     </div>
-    </div>)
+   )
 }
 
 export default User

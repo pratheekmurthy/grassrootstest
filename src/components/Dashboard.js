@@ -13,11 +13,9 @@ const Dashboard =(props)=>{
 
     
     
-    
-    
     return (<div>
       <Header/>
-      <img src="/dashboard5.jpg" className="image"/>  
+      <img src="/dashboard5.jpg" className="imageDashboard"/>  
     </div>)
 }
 

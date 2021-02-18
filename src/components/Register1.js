@@ -130,7 +130,7 @@ export default function SignIn() {
             id="name"
             label="User name"
             name="email"
-            autoComplete="email"
+            
             autoFocus
             value={name}
             onChange={handleName}
@@ -143,6 +143,7 @@ export default function SignIn() {
             fullWidth
             name="email"
             label="Enter your email"
+            autoComplete="email"
             type="email"
             id="email"
             value={email} 

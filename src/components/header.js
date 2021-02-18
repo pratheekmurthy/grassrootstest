@@ -235,7 +235,6 @@ export default function PrimarySearchAppBar(props) {
               onClick={handlelogout}
               color="inherit"
             ><ExitToAppIcon/>
-              
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

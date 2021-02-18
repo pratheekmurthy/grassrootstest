@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react'
-import { Link, Switch, Route,Redirect,useHistory } from 'react-router-dom'
+import { Router,Link, Switch, Route,Redirect,useHistory,IndexRoute} from 'react-router-dom'
 import Navbar from './NavBar'
 import Login from './Login'
 import Dashboard from './Dashboard'
@@ -13,24 +13,24 @@ import {login ,startadduser } from '../actiongenerators/logActions'
 
 const App = (props) => {
   const isLogin = useSelector(state => state.log)
-
   let history =useHistory();
 
 
   return (<div >
     {
       isLogin ? (<div>
-        {history.push('/dashboard')}
+        {history.push("/dashboard")}
       </div>) : (<div>{history.push("/")}</div>)
     }
     
 
     <Switch>
       <Route path='/' component={Home} exact={true}/>
-      <Route path='/Dashboard' component={Dashboard} exact={true} />
       <Route path='/login' component={Login} exact={true} />
       <Route path='/register' component={Register} exact={true} />
       <PrivateRoute path="/user" component={User} exact={true} />
+      <PrivateRoute path='/dashboard' component={Dashboard} exact={true} />
+
     </Switch>
 
   </div>)

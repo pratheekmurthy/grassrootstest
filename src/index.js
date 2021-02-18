@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App'
 
 
+
 const store = configureStore()
 
 if(localStorage.getItem('token')){
@@ -19,7 +20,7 @@ if(localStorage.getItem('token')){
 
 const ele =(
             <Provider store={store}>
-               <BrowserRouter>
+               <BrowserRouter >
              <App />
              </BrowserRouter>
              </Provider>
