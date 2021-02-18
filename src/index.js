@@ -15,7 +15,6 @@ const store = configureStore()
 if(localStorage.getItem('token')){
    store.dispatch(startadduser(localStorage.getItem('token')))
    store.dispatch(login())
-   
 }
 
 const ele =(
