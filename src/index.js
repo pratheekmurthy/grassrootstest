@@ -12,8 +12,9 @@ import App from './components/App'
 const store = configureStore()
 
 if(localStorage.getItem('token')){
-   store.dispatch(login())
    store.dispatch(startadduser(localStorage.getItem('token')))
+   store.dispatch(login())
+   
 }
 
 const ele =(

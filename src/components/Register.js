@@ -3,14 +3,11 @@ import {useSelector,useDispatch} from 'react-redux'
 import {startadduser} from '../actiongenerators/logActions'
 import {Button,Grid,TextField,Paper} from '@material-ui/core'
 import Data from '../data.json'
+import Header from './HomeHeader'
 
 const Register =(props)=>{
     const accounts =useSelector(state => state.accounts)
-    console.log(accounts)
-
     const dispatch = useDispatch()
-
-    
 
     //initialising state variable for input fields
     const [email,setEmail]= useState("")
@@ -30,6 +27,9 @@ const Register =(props)=>{
         }
         if(password.trim().length === 0){
             errors.password = "Password cannot be blank"
+        }
+        if(name.trim().length === 0){
+            errors.name ="User name cannot be blank"
         }
     }
     
@@ -59,7 +59,9 @@ const Register =(props)=>{
     }
     }
 
-    return (<div className="loginBox">
+    return (<div>
+        <Header/>
+        <div className="loginBox">
         <div className="card">
         <h2>Register with us</h2>
         <form onSubmit={handleSubmit} >
@@ -68,6 +70,7 @@ const Register =(props)=>{
             <TextField label="Enter your password" variant="outlined" type="password" value={password} placeholder="Enter your email" onChange={handlePassword} />{formErrors.password && <span>{ formErrors.password }</span>}<br/><br/>
             <input type="submit" className="btn btn-primary " />
         </form>
+    </div>
     </div>
     </div>)
 }

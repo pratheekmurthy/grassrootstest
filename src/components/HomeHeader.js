@@ -17,6 +17,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {useDispatch} from 'react-redux'
 import {login} from '../actiongenerators/logActions'
+import {Button} from '@material-ui/core'
 import { useHistory } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
@@ -96,13 +97,12 @@ export default function PrimarySearchAppBar(props) {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
-    history.push('/user')
+    history.push('/login')
   };
 
-  const handlelogout=(e)=>{
-    localStorage.removeItem('token')
-    history.push('/')
-    dispatch(login())
+  const handleRegister=(e)=>{
+    history.push('/register')
+
   }
   
   const handleMobileMenuClose = () => {
@@ -181,18 +181,20 @@ export default function PrimarySearchAppBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            grassroots
+          </IconButton> */}
+          <Typography className={classes.title} variant="h6" noWrap >
+            <i onClick={()=>{
+                history.push("/")
+            }}>grassroots</i>
           </Typography>
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -203,8 +205,8 @@ export default function PrimarySearchAppBar(props) {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+            /> */}
+          {/* </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">
@@ -224,17 +226,16 @@ export default function PrimarySearchAppBar(props) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-            >
-              <AccountCircle />
+            ><Button variant="contained">Sign in</Button>
             </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handlelogout}
+              onClick={handleRegister}
               color="inherit"
-            ><ExitToAppIcon/>
+            ><Button variant="contained">Sign up</Button>
               
             </IconButton>
           </div>
@@ -245,8 +246,7 @@ export default function PrimarySearchAppBar(props) {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-            >
-              <MoreIcon />
+            ><Button variant="contained">Sign in</Button>
             </IconButton>
           </div>
         </Toolbar>

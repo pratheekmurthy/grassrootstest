@@ -15,7 +15,8 @@ import Grid from '@material-ui/core/Grid';
 // import {LockOutlinedIcon} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {useHistory} from 'react-router-dom'
+import {useHistory,Redirect} from 'react-router-dom'
+import Header from './HomeHeader'
 
 
 const Login =(props)=>{
@@ -41,7 +42,7 @@ const Login =(props)=>{
           .then(function(myJson) {
             setAccounts(myJson)
           });
-    },[]) 
+    },[dispatch]) 
 
     // dispatch
 
@@ -66,6 +67,9 @@ const Login =(props)=>{
             localStorage.setItem('token',result[0].id)
            dispatch(startadduser(result[0])) 
            dispatch(login())
+           props.history.push('/dashboard')
+           window.location.reload()
+           
             
         }
         }
@@ -153,7 +157,9 @@ const Login =(props)=>{
 
 
     
-    return ( <Grid container component="main" className={classes.root}>
+    return ( <div>
+      <Header/>
+    <Grid container component="main" className={classes.root}>
     <CssBaseline />
     <Grid item xs={false} sm={4} md={7} className={classes.image} />
     <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -222,7 +228,8 @@ const Login =(props)=>{
         </form>
       </div>
     </Grid>
-  </Grid>)
-}
+  </Grid>
+  </div>)
+  }
 
 export default Login

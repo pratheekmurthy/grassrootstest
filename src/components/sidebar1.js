@@ -164,7 +164,7 @@ export default function PrimarySearchAppBar(props) {
 
   const handlelogout=(e)=>{
     localStorage.removeItem('token')
-    dispatch(login())
+    history.push('/')
 
   }
   
@@ -252,9 +252,9 @@ export default function PrimarySearchAppBar(props) {
         </React.Fragment>
             
           <Typography className={classes.title} variant="h6" noWrap>
-            grassroots
+            <i onClick={()=>{history.push("/dashboard")}}>grassroots</i>
           </Typography>
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -266,7 +266,7 @@ export default function PrimarySearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">
