@@ -7,6 +7,7 @@ import {login,startadduser} from './actiongenerators/logActions'
 import configureStore from './store/configureStore'
 import 'bootstrap/dist/css/bootstrap.css'
 import App from './components/App'
+import history from './components/history'
 
 
 
@@ -19,7 +20,7 @@ if(localStorage.getItem('token')){
 
 const ele =(
             <Provider store={store}>
-               <BrowserRouter >
+               <BrowserRouter history={history}>
              <App />
              </BrowserRouter>
              </Provider>

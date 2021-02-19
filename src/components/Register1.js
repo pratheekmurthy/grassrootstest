@@ -16,7 +16,7 @@ import Container from '@material-ui/core/Container';
 import {useSelector,useDispatch} from 'react-redux'
 import {startadduser} from '../actiongenerators/logActions'
 // import {Button,Grid,TextField,Paper} from '@material-ui/core'
-import Data from '../data.json'
+// import Data from '../data.json'
 import Header from './HomeHeader'
 import {useHistory} from 'react-router-dom'
 
@@ -102,7 +102,7 @@ export default function SignIn() {
         }
         dispatch(startadduser(formData,handleRedirect))
         // Data.push(formData)
-        console.log(Data)
+        // console.log(Data)
         
     }else {
         console.log('form errors', errors)

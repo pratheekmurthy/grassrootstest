@@ -24,9 +24,9 @@
   }
 
   .homeprofileCard{
-    width : 10rem;
-    height: 20rem;
-    justify-content: center;
+    width : 20rem;
+    height: 8rem;
+    justify-content: 'center';
   }
 
   .image {
@@ -36,5 +36,6 @@
 
   .imageDashboard{
     max-width: 100%;
+
   }
 

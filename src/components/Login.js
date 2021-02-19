@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 // import {LockOutlinedIcon} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import {useHistory,Redirect} from 'react-router-dom'
+import {useHistory,Redirect,browserHistory} from 'react-router-dom'
 import Header from './HomeHeader'
 
 

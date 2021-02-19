@@ -14,10 +14,11 @@ const User =(props)=>{
     
     return (<div>
         <Header/>
-       <Paper elevation={3} className="paper">
-        <h2>Admin page</h2>
+       <div>
+        <h2>Admin Details</h2>
+        <Paper elevation={3} className="homeprofileCard">
         {
-            user.id ? (<div class="card">
+            user.id ? (<div>
                 <h6>user-id :{user.id}</h6>
                 <p>user Email : {user.email}</p>
                 <h6>user Password : {user.password}</h6>
@@ -27,7 +28,9 @@ const User =(props)=>{
                 }
             </div>)
         }
-       </Paper> 
+        
+       </Paper>
+       </div> 
     </div>
    )
 }
